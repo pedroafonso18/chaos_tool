@@ -45,6 +45,19 @@ pub enum Commands {
         // Db Url for connecting to database
         #[clap(value_name = "PATTERN")]
         dburl: String,
+    },
+
+    /// Simulate DB failure. WARNING: This is extremely unsafe by nature, so no safety tag, use at your own risk.
+    Dbfailure {
+        #[clap(value_name = "PATTERN")]
+        /// Remote host to connect to, be sure to pass the root user as the parameter.
+        remote_host: String,
+        #[clap(short, long)]
+        /// Remote host of the db, if it is postgres usually it will be in port 5432.
+        remote_port: i32,
+        /// The seconds to block the use of the db for.
+        #[clap(short, long)]
+        seconds: i32,
     }
 }
 

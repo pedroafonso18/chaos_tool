@@ -6,10 +6,9 @@ This is a chaos tool created by and for Pedro Afonso, tailored for my specific u
 - **CPU Hogger:** Simulate high CPU usage by allocating multiple cores for a specified duration.
 - **RAM Hogger:** Simulate high memory usage by allocating a specified amount of RAM for a specified duration.
 - **Database Connection Hogger:** Open and hold a large number of database connections for a specified duration to simulate max user or resource exhaustion scenarios.
+- **Database Failure Simulation:** Temporarily block access to a remote database by manipulating firewall rules over SSH.
 
 ## Planned Features
-- **Database Failure Simulation:** Tools to simulate database outages or failures.
-- **Max Users in Database:** Simulate scenarios where the database reaches its maximum user capacity.
 - **VM Shutdown Simulation:** Simulate virtual machine shutdown events for resilience testing.
 
 ---
@@ -55,12 +54,23 @@ chaostool memhog --megabytes 1024 --seconds 10 [--remove-safety]
 ### Database Connection Hogger
 Open and hold many database connections:
 ```sh
-chaostool dbfull --db-url <DATABASE_URL> --users 50 --seconds 10 [--remove-safety]
+chaostool dbfull --users 50 --seconds 10 --dburl <DATABASE_URL> [--remove-safety]
 ```
-- `--db-url`: The database connection string (e.g., postgres://user:pass@host/db)
 - `--users`: Number of connections to open
 - `--seconds`: Duration to hold the connections
+- `--dburl`: The database connection string (e.g., postgres://user:pass@host/db)
 - `--remove-safety`: (Optional) Remove safety checks (use with caution)
+
+### Database Failure Simulation
+Temporarily block access to a remote database by manipulating firewall rules over SSH:
+```sh
+chaostool dbfailure <REMOTE_HOST> --remote_port 5432 --seconds 10
+```
+- `<REMOTE_HOST>`: The SSH address of the remote host (e.g., root@your-db-server)
+- `--remote_port`: The port of the database service (e.g., 5432 for PostgreSQL)
+- `--seconds`: Duration to block the database (in seconds)
+
+**Warning:** This command is extremely unsafe by nature. Use at your own risk and only on test environments!
 
 ---
 

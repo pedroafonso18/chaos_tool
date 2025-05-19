@@ -14,6 +14,9 @@ fn main() {
         },
         clicommands::Commands::Dbfull { users, seconds, remove_safety, dburl } => {
             database::dbfull::dbfull(&dburl, users, seconds, remove_safety);
+        },
+        clicommands::Commands::Dbfailure { remote_host, remote_port, seconds } => {
+            database::dbfailure::dbfailure(&remote_host, remote_port, seconds);
         }
     }
 }
