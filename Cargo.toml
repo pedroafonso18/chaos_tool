@@ -8,3 +8,4 @@ clap = { version = "4.5.38", features = ["derive"] }
 rayon = "1.10.0"
 num_cpus = "1.16.0"
 postgres = "0.19.10"
+regex = "1.11.1"
