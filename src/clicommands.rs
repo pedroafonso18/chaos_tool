@@ -15,6 +15,18 @@ pub enum Commands {
         #[clap(short, long)]
         remove_safety: bool,
     },
+    /// Simulate high CPU usage
+    Cpuhog {
+        /// Amount of CPU cores to allocate (e.g., 2, 1)
+        #[clap(short, long)]
+        cores: u32,
+        /// Number of seconds to alocate for
+        #[clap(short, long)]
+        seconds: u32,
+        /// Remove safety checks (ESPECIALLY NOT RECOMMENDED, THIS MAY SHUTDOWN YOUR PC)
+        #[clap(short, long)]
+        remove_safety: bool,
+    },
 }
 
 
