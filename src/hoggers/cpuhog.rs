@@ -4,6 +4,10 @@ use std::time::{Duration, Instant};
 
 pub fn cpuhogger(cores: u32, seconds: u32, is_safe: bool) {
     let safe_core_count = 4;
+    let available = num_cpus::get_physical();
+    if cores > available as u32 {
+        eprintln!("Warning: Requested {} cores, but only {} available!", cores, available);
+    }
     if cores > safe_core_count && is_safe {
         eprintln!("Safety is ON: Refusing to allocate more than {} cores of CPU. use --remove-safety to override.", safe_core_count)
     }
