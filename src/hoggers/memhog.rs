@@ -2,7 +2,7 @@ use std::{thread, time::Duration};
 
 pub fn memhogger(megabytes: u32, seconds: u32, is_safe: bool) {
     let max_safe_mb = 4096;
-    if is_safe && megabytes > max_safe_mb {
+    if !is_safe && megabytes > max_safe_mb {
         eprintln!(
             "Safety is ON: Refusing to allocate more than {} MB. Use --remove-safety to override.",
             max_safe_mb

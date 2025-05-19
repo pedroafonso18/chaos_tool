@@ -1,5 +1,6 @@
 mod hoggers;
 mod clicommands;
+mod database;
 
 fn main() {
     let args = clicommands::Cli::parse();
@@ -10,6 +11,9 @@ fn main() {
         },
         clicommands::Commands::Cpuhog { cores, seconds, remove_safety } => {
             hoggers::cpuhog::cpuhogger(cores, seconds, !remove_safety);
+        },
+        clicommands::Commands::Dbfull { users, seconds, remove_safety, dburl } => {
+            database::dbfull::dbfull(&dburl, users, seconds, remove_safety);
         }
     }
 }

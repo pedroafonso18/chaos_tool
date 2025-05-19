@@ -27,6 +27,25 @@ pub enum Commands {
         #[clap(short, long)]
         remove_safety: bool,
     },
+
+    /// Simulate max users at db
+    Dbfull {
+        // Amount of users you want to insert at the db
+        #[clap(short, long)]
+        users: u32,
+
+        // Amount of time the users will be active for
+        #[clap(short, long)]
+        seconds: u32,
+
+        // Remove safety checks (May cause connecting to database impossible)
+        #[clap(short, long)]
+        remove_safety:bool,
+
+        // Db Url for connecting to database
+        #[clap(value_name = "PATTERN")]
+        dburl: String,
+    }
 }
 
 

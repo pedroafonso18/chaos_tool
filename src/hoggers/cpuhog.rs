@@ -8,7 +8,7 @@ pub fn cpuhogger(cores: u32, seconds: u32, is_safe: bool) {
     if cores > available as u32 {
         eprintln!("Warning: Requested {} cores, but only {} available!", cores, available);
     }
-    if cores > safe_core_count && is_safe {
+    if cores > safe_core_count && !is_safe {
         eprintln!("Safety is ON: Refusing to allocate more than {} cores of CPU. use --remove-safety to override.", safe_core_count)
     }
     let pool = ThreadPoolBuilder::new()
