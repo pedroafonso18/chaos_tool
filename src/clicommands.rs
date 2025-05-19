@@ -58,6 +58,16 @@ pub enum Commands {
         /// The seconds to block the use of the db for.
         #[clap(short, long)]
         seconds: i32,
+    },
+
+    /// Simulate VM failure. WARNING: This is extremely unsafe by nature, so no safety tag, use at your own risk.
+    Vmfailure {
+        #[clap(value_name = "PATTERN")]
+        /// Remote host to connect to, be sure to pass the root user as the parameter.
+        remote_host: String,
+        #[clap(short, long)]
+        /// The seconds to block the virtual machine's network for (blocks all INPUT and OUTPUT).
+        seconds: i32,
     }
 }
 

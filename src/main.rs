@@ -1,6 +1,7 @@
 mod hoggers;
 mod clicommands;
 mod database;
+mod vm;
 
 fn main() {
     let args = clicommands::Cli::parse();
@@ -17,6 +18,9 @@ fn main() {
         },
         clicommands::Commands::Dbfailure { remote_host, remote_port, seconds } => {
             database::dbfailure::dbfailure(&remote_host, remote_port, seconds)
+        },
+        clicommands::Commands::Vmfailure { remote_host, seconds } => {
+            vm::vmfailure::vmfailure(&remote_host, seconds)
         }
     };
 

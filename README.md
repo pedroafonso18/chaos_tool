@@ -7,10 +7,10 @@ This is a chaos tool created by and for Pedro Afonso, tailored for my specific u
 - **RAM Hogger:** Simulate high memory usage by allocating a specified amount of RAM for a specified duration.
 - **Database Connection Hogger:** Open and hold a large number of database connections for a specified duration to simulate max user or resource exhaustion scenarios.
 - **Database Failure Simulation:** Temporarily block access to a remote database by manipulating firewall rules over SSH.
-
-## Planned Features
 - **VM Shutdown Simulation:** Simulate virtual machine shutdown events for resilience testing.
 
+## Planned Features
+- **Random Docker container delete:** Simply delete random docker containers for resilience testing. 
 ---
 
 ## Installation
@@ -69,6 +69,16 @@ chaostool dbfailure <REMOTE_HOST> --remote_port 5432 --seconds 10
 - `<REMOTE_HOST>`: The SSH address of the remote host (e.g., root@your-db-server)
 - `--remote_port`: The port of the database service (e.g., 5432 for PostgreSQL)
 - `--seconds`: Duration to block the database (in seconds)
+
+**Warning:** This command is extremely unsafe by nature. Use at your own risk and only on test environments!
+
+### VM Failure Simulation
+Simulate a virtual machine network failure by blocking all INPUT and OUTPUT traffic via firewall rules over SSH:
+```sh
+chaostool vmfailure <REMOTE_HOST> --seconds 10
+```
+- `<REMOTE_HOST>`: The SSH address of the remote VM (e.g., root@your-vm-server)
+- `--seconds`: Duration to block the VM's network (in seconds)
 
 **Warning:** This command is extremely unsafe by nature. Use at your own risk and only on test environments!
 
