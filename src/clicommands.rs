@@ -68,6 +68,19 @@ pub enum Commands {
         #[clap(short, long)]
         /// The seconds to block the virtual machine's network for (blocks all INPUT and OUTPUT).
         seconds: i32,
+    },
+
+    /// Simulate container killing, may be random or specified.
+    Dockerkill {
+        #[clap(value_name = "PATTERN")]
+        /// Container name (if present)
+        container_name: Option<String>,
+        #[clap(short, long)]
+        /// Random mode (delete a random container)
+        is_random: bool,
+        #[clap(short, long)]
+        /// Prune mode (DO NOT DO THIS UNLESS YOU ARE ABSOLUTELY SURE WHAT YOU'RE DOING)
+        prune: bool,
     }
 }
 

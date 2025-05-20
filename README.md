@@ -8,9 +8,12 @@ This is a chaos tool created by and for Pedro Afonso, tailored for my specific u
 - **Database Connection Hogger:** Open and hold a large number of database connections for a specified duration to simulate max user or resource exhaustion scenarios.
 - **Database Failure Simulation:** Temporarily block access to a remote database by manipulating firewall rules over SSH.
 - **VM Shutdown Simulation:** Simulate virtual machine shutdown events for resilience testing.
+- **Random Docker container delete:** Simply delete random docker containers for resilience testing.
+- **Prune all Docker containers:** Remove all Docker containers at once for a full cleanup scenario.
 
 ## Planned Features
-- **Random Docker container delete:** Simply delete random docker containers for resilience testing. 
+- **Random lagspikes:** Random lagspikes on network requests.
+- **Request interruption:** Make the machine unreachable for a few seconds, simulating an internet failure. 
 ---
 
 ## Installation
@@ -82,6 +85,21 @@ chaostool vmfailure <REMOTE_HOST> --seconds 10
 
 **Warning:** This command is extremely unsafe by nature. Use at your own risk and only on test environments!
 
+### Docker Container Chaos
+Simulate Docker container chaos:
+```sh
+chaostool dockerkill --container_name <CONTAINER_NAME>
+chaostool dockerkill --random
+chaostool dockerkill --prune
+```
+- `--container_name`: Name of the container to stop and remove
+- `--random`: Remove a random running container
+- `--prune`: Remove all containers (running and stopped)
+
+**Warning:** These commands are destructive. Use with caution and only on test environments!
+
 ---
 
 This tool is under active development and will continue to evolve with more chaos engineering features tailored to my needs.
+
+[Leia em Português](README-pt)

@@ -2,6 +2,7 @@ mod hoggers;
 mod clicommands;
 mod database;
 mod vm;
+mod docker;
 
 fn main() {
     let args = clicommands::Cli::parse();
@@ -21,6 +22,9 @@ fn main() {
         },
         clicommands::Commands::Vmfailure { remote_host, seconds } => {
             vm::vmfailure::vmfailure(&remote_host, seconds)
+        },
+        clicommands::Commands::Dockerkill { container_name, is_random, prune } => {
+            docker::dockerkill::dockerkill(container_name, is_random, prune)
         }
     };
 
