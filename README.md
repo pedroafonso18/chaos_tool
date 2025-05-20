@@ -102,4 +102,4 @@ chaostool dockerkill --prune
 
 This tool is under active development and will continue to evolve with more chaos engineering features tailored to my needs.
 
-[Leia em Português](README-pt)
+[Leia em Português](README-pt.md)
