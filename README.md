@@ -88,12 +88,12 @@ chaostool vmfailure <REMOTE_HOST> --seconds 10
 ### Docker Container Chaos
 Simulate Docker container chaos:
 ```sh
-chaostool dockerkill --container_name <CONTAINER_NAME>
-chaostool dockerkill --random
+chaostool dockerkill [CONTAINER_NAME]
+chaostool dockerkill --is-random
 chaostool dockerkill --prune
 ```
-- `--container_name`: Name of the container to stop and remove
-- `--random`: Remove a random running container
+- `[CONTAINER_NAME]`: Name of the container to stop and remove (positional argument)
+- `--is-random`: Remove a random running container
 - `--prune`: Remove all containers (running and stopped)
 
 **Warning:** These commands are destructive. Use with caution and only on test environments!
